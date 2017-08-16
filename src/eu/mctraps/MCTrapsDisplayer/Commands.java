@@ -160,6 +160,22 @@ public class Commands implements CommandExecutor {
             }
 
             return true;
+        } else if(cmd.getName().equalsIgnoreCase("bc")) {
+            if(sender.hasPermission("tools.displayer.bc")) {
+                if (args.length > 1) {
+                    String message = plugin.config.getString("broadcasts.prefix");
+                    for (int i = 0; i < args.length; i++) {
+                        message += args[i];
+                    }
+
+                    plugin.getServer().broadcastMessage(colorify(message));
+                } else if (args.length == 0) {
+                    sender.sendMessage("§7/bc");
+                    sender.sendMessage(" §3§l» §7/bc §c<wiadomosc> §7- pokaz wiadomosc wszystkim graczom na serwerze");
+                }
+            } else {
+                sender.sendMessage("§4Blad: Nie masz uprawnien :(");
+            }
         }
 
         return false;

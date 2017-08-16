@@ -4,3 +4,5 @@ titles:
     title: 'Welcome to [name] server!'
     subtitle: ''
   defaultDuration: 40
+broadcasts:
+  prefix: '&4[&3&lYour Server&4] &9'

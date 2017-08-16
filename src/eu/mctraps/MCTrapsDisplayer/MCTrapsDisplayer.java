@@ -12,8 +12,9 @@ public class MCTrapsDisplayer extends JavaPlugin {
     public void onEnable() {
         getLogger().info("MCTrapsDisplayer has been enabled");
 
-        saveDefaultConfig();
         getDataFolder().mkdir();
+        getConfig().options().copyDefaults(true);
+        saveDefaultConfig();
         config = getConfig();
 
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
@@ -21,6 +22,7 @@ public class MCTrapsDisplayer extends JavaPlugin {
         getCommand("displayer").setExecutor(new Commands(this));
         getCommand("bar").setExecutor(new Commands(this));
         getCommand("titled").setExecutor(new Commands(this));
+        getCommand("bc").setExecutor(new Commands(this));
     }
 
     @Override

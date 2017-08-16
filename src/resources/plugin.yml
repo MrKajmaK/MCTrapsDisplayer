@@ -18,6 +18,10 @@ commands:
     description: "Wyswietl wiadomosc jako Title"
     usage: /<command>
     permission: tools.displayer.title
+  bc:
+    description: "Wyswietl wiadomosc na czacie"
+    usage: /<command>
+    permission: tools.displayer.bc
 #  voucher:
 #    description: "Komenda do obsługi voucherów"
 #    aliases: [vouchers]
@@ -28,9 +32,9 @@ permissions:
     description: "Wszystkie uprawnienia pluginu"
     default: op
     children:
-#      - tools.smsshop.admin
-#      - tools.smsshop.voucher
-      - tools.smsshop.bar
+      - tools.displayer.bar
+      - tools.displayer.titled
+      - tools.displayer.bc
 #  tools.smsshop.admin:
 #    description: "Pozwala na użycie głównej komendy"
 #    default: op
@@ -42,4 +46,7 @@ permissions:
     default: op
   tools.displayer.titled:
     description: "Pozwala na wysyłanie wiadomości jako Title"
+    default: op
+  tools.displayer.bc:
+    description: "Pozwala na wysyłanie wiadomości na czacie"
     default: op
