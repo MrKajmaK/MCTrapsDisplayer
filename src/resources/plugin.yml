@@ -3,7 +3,6 @@ version: 1.5.0
 author: KajmaczeK
 main: eu.mctraps.MCTrapsDisplayer.MCTrapsDisplayer
 website: https://mctraps.eu
-#depend: [ActionBarAPI]
 commands:
   displayer:
     description: "Główna komenda pluginu"
@@ -22,11 +21,6 @@ commands:
     description: "Wyswietl wiadomosc na czacie"
     usage: /<command>
     permission: tools.displayer.bc
-#  voucher:
-#    description: "Komenda do obsługi voucherów"
-#    aliases: [vouchers]
-#    usage: /<command> <list|info|add|remove|edit>
-#    permission: tools.smsshop.voucher
 permissions:
   tools.displayer.*:
     description: "Wszystkie uprawnienia pluginu"
@@ -35,12 +29,6 @@ permissions:
       - tools.displayer.bar
       - tools.displayer.titled
       - tools.displayer.bc
-#  tools.smsshop.admin:
-#    description: "Pozwala na użycie głównej komendy"
-#    default: op
-#  tools.smsshop.voucher:
-#    description: "Pozwala na obsługę voucherów"
-#    default: op
   tools.displayer.bar:
     description: "Pozwala na wysyłanie wiadomości na ActionBarze"
     default: op
