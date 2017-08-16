@@ -23,6 +23,8 @@ public class Title {
     boolean isSubtitle = false;
 
     public Title(String message, String subtitle, int duration, MCTrapsDisplayer plugin) {
+        this.plugin = plugin;
+
         if(message != null) {
             isTitle = true;
             chatTitle = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + colorify(message).replace('_', ' ') + "\"}");
@@ -67,17 +69,17 @@ public class Title {
     }
 
     public void sendAll() {
-//        if(isTitle) {
+        if(isTitle) {
             for (Player p : plugin.getServer().getOnlinePlayers()) {
                 ((CraftPlayer) p).getHandle().playerConnection.sendPacket(title);
                 ((CraftPlayer) p).getHandle().playerConnection.sendPacket(length);
             }
-//        }
-//        if(isSubtitle) {
-//            for (Player p : plugin.getServer().getOnlinePlayers()) {
-//                ((CraftPlayer) p).getHandle().playerConnection.sendPacket(subtitle);
-//                ((CraftPlayer) p).getHandle().playerConnection.sendPacket(sublength);
-//            }
-//        }
+        }
+        if(isSubtitle) {
+            for (Player p : plugin.getServer().getOnlinePlayers()) {
+                ((CraftPlayer) p).getHandle().playerConnection.sendPacket(subtitle);
+                ((CraftPlayer) p).getHandle().playerConnection.sendPacket(sublength);
+            }
+        }
     }
 }
