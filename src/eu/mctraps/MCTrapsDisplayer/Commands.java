@@ -24,6 +24,7 @@ public class Commands implements CommandExecutor {
                     sender.sendMessage("§3§l»§3§m----------§3§l« §9Komendy §3§l»§3§m----------§3§l«");
                     sender.sendMessage(" §3§l» §7/bar §8[alias: actionbar]");
                     sender.sendMessage(" §3§l» §7/titled");
+                    sender.sendMessage(" §3§l» §7/bc");
                     sender.sendMessage("§3§l»§3§m----------§3§l« §9Plugin MCTrapsDisplayer v1.0.0 by §6KajmaczeK §3§l»§3§m----------§3§l«");
                     return true;
                 } else {
