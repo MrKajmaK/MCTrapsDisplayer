@@ -176,6 +176,7 @@ public class Commands implements CommandExecutor {
             } else {
                 sender.sendMessage("§4Blad: Nie masz uprawnien :(");
             }
+            return true;
         }
 
         return false;
