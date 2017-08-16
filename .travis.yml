@@ -7,12 +7,8 @@ before_install:
 - sudo apt-get install -y rsync
 - sudo apt-get install -y expect
 after_success:
-#- ssh-keyscan 5.135.248.254 >> ~/.ssh/known_hosts
-#- chmod 770 .travis/deploy.sh
-#- chmod 770 .travis/deploy.exp
 - chmod 770 .travis/notification.sh
-#- ".travis/deploy.exp"
-- '.travis/notification.sh "MCTrapsDisplayer build ended"'
+- .travis/notification.sh "MCTrapsDisplayer build ended"
 branchers:
   only:
   - master
@@ -22,7 +18,7 @@ deploy:
   provider: releases
   api_key:
     secure:
-      secure: 7JgEeG3Y1kGVr1QfoeQmZSxJQqJMIW2bbkvLvT1zmKY9o9Bxr9FeEQHstlw13YF3Dm6oyzhBGU2LrZa0M55dERIjVTq8fTnN/f/NelbwNB16JBQN2wMtcIrVvHmCjtdrw9PM+GnanyXfg0uFTf3fNeO3j6xFrYtpmPol7Pm99rOU3YDFCdFWvkcnZbXs4eXwn2AeQcniEQ9B63Vm/XyDRlYkmE0qVZKCxX/bdb3Rf+5iCXFZzc6beM4s9Q1imFIOY6Szw30mVXZRUxMoSTVCFT4pgB+0lU+9bq8ZVLqq/oq/pMp9Kx7GFZLRX5odlo6NFSSptqW62vwBa2ztdRhygZfgBlnHX9LmS9YNcIFS0dJNlntDKOGz+V5lSPXr3jUHPXtk8Mura7F5efCaMIe8R2hHDam+tTBTbEy+iteMncdZXWosQxUjuwyQaUUG6x/eRF8NS13Z3uIDbTHZHc7mz4pnn0iQoyeAJrmFxlk3xqWw3OB1rqsXjOjUnIDxjZKosHHnExiZpBtAGK4TVA9KZb+FXSy2gh5itPGHv5EC6U+9dOFB9vxYi0i8O3ijmrQ5xUfPGCi0skA/txeWg/ZslxKFtZLtCSg7uvf+IHMunkltTfe9evVBPyIh+ZUtNgMAwgv5CgKmpmJf2xPRSJnHZcEeOnnagQP5TRcPT2nn1cw=
+      secure: zXAZZp3ghjTcXTi3l+NKiE21HInBmAPCP1SzDqrH1Ct7O2NsLTahd7i6Jr10U/dAHsRwdL+Z7SwT81yeFbqm+srILeHGOITu8mY3HQgADqLtHOn9QzCfUDK669BMSUruLhNgq71iSotlwU2TJA8knxj22v8bmNh4I+SHu0vwMI7boYI9vr8RU6Rz4d+SId1cRp422mpbAu08vblkiHae8D3mlayC/Vjw/5DspGU/9BrEctPpCYf/V72KAn8IZSF54jjewESCtk8booixlQKnKo5cD4RTFhXlRToG9b/J/0xCyXWbmo/8S+QurZmA/8u+bMK5N/Sy1HTS27VpZadRM2cWckgVQ1W2Y/ELRLe875Q/gLz1Bd9OSByRXIRxoIdBrfFmk9w9Ve3D/dyM1gdbcsxqcBpTDC+rE7HxspI/WMAIcG4KgISzc2EalVfA1KwyMcLBxR+YC1bReuvjCKg60hl5fNfq+5WsMFP+QOTIfkZ5KMBXlGl/RsJC5YN+thfbnxu2CkknmVu0F488INDuz/U8aYNpgO4rx4D+sG/wCbEdFKBvkXTe2qwno5hY7R33ecqp3Lynr1RwKr6lqGHU+itIVhO63UUypr3vTP1PJM2mr6Pcm8WEq2m0yFgeCSHPCiCFk++4W1OWKGmGd7wDYcmiTjVD62Z67SOv9xSijYA=
   file: "/home/travis/build/MrKajmaK/MCTrapsShop/target/MCTrapsDisplayer.jar"
   skip_cleanup: true
   on:
