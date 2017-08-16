@@ -2,7 +2,6 @@ package eu.mctraps.MCTrapsDisplayer;
 
 import eu.mctraps.MCTrapsDisplayer.commands.ActionBar;
 import eu.mctraps.MCTrapsDisplayer.commands.Title;
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -162,14 +161,15 @@ public class Commands implements CommandExecutor {
             return true;
         } else if(cmd.getName().equalsIgnoreCase("bc")) {
             if(sender.hasPermission("tools.displayer.bc")) {
-                if (args.length > 1) {
-                    String message = plugin.config.getString("broadcasts.prefix");
+                if (args.length >= 1) {
+                    StringBuilder message = new StringBuilder();
+                    message.append(plugin.config.getString("broadcasts.prefix"));
                     for (int i = 0; i < args.length; i++) {
-                        message += args[i];
+                        message.append(args[i]);
                     }
 
-                    plugin.getServer().broadcastMessage(colorify(message));
-                } else if (args.length == 0) {
+                    plugin.getServer().broadcastMessage(colorify(message.toString()));
+                } else {
                     sender.sendMessage("§7/bc");
                     sender.sendMessage(" §3§l» §7/bc §c<wiadomosc> §7- pokaz wiadomosc wszystkim graczom na serwerze");
                 }
