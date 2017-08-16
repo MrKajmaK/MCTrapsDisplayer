@@ -1,0 +1,31 @@
+language: java
+jdk:
+- oraclejdk8
+sudo: required
+script: mvn clean verify
+before_install:
+- sudo apt-get install -y rsync
+- sudo apt-get install -y expect
+after_success:
+- ssh-keyscan 5.135.248.254 >> ~/.ssh/known_hosts
+- chmod 770 .travis/deploy.sh
+- chmod 770 .travis/deploy.exp
+- chmod 770 .travis/notification.sh
+- ".travis/deploy.exp"
+- '.travis/notification.sh "MCTrapsDisplayer build ended"'
+branchers:
+  only:
+  - master
+  except:
+  - "/^untagged-(.*)$/"
+deploy:
+  provider: releases
+  api_key:
+    secure:
+      secure: 7JgEeG3Y1kGVr1QfoeQmZSxJQqJMIW2bbkvLvT1zmKY9o9Bxr9FeEQHstlw13YF3Dm6oyzhBGU2LrZa0M55dERIjVTq8fTnN/f/NelbwNB16JBQN2wMtcIrVvHmCjtdrw9PM+GnanyXfg0uFTf3fNeO3j6xFrYtpmPol7Pm99rOU3YDFCdFWvkcnZbXs4eXwn2AeQcniEQ9B63Vm/XyDRlYkmE0qVZKCxX/bdb3Rf+5iCXFZzc6beM4s9Q1imFIOY6Szw30mVXZRUxMoSTVCFT4pgB+0lU+9bq8ZVLqq/oq/pMp9Kx7GFZLRX5odlo6NFSSptqW62vwBa2ztdRhygZfgBlnHX9LmS9YNcIFS0dJNlntDKOGz+V5lSPXr3jUHPXtk8Mura7F5efCaMIe8R2hHDam+tTBTbEy+iteMncdZXWosQxUjuwyQaUUG6x/eRF8NS13Z3uIDbTHZHc7mz4pnn0iQoyeAJrmFxlk3xqWw3OB1rqsXjOjUnIDxjZKosHHnExiZpBtAGK4TVA9KZb+FXSy2gh5itPGHv5EC6U+9dOFB9vxYi0i8O3ijmrQ5xUfPGCi0skA/txeWg/ZslxKFtZLtCSg7uvf+IHMunkltTfe9evVBPyIh+ZUtNgMAwgv5CgKmpmJf2xPRSJnHZcEeOnnagQP5TRcPT2nn1cw=
+  file: "/home/travis/build/MrKajmaK/MCTrapsShop/target/MCTrapsDisplayer.jar"
+  skip_cleanup: true
+  on:
+    repo: MrKajmaK/MCTrapsDisplayer
+    branch: master
+    tags: true

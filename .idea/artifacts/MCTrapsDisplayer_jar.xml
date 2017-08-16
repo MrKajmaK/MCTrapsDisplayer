@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="MCTrapsDisplayer:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/MCTrapsDisplayer_jar</output-path>
+    <root id="archive" name="MCTrapsDisplayer.jar">
+      <element id="module-output" name="MCTrapsDisplayer" />
+      <element id="dir-copy" path="$PROJECT_DIR$/src/resources" />
+    </root>
+  </artifact>
+</component>
