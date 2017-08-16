@@ -1,5 +1,6 @@
 package eu.mctraps.MCTrapsDisplayer;
 
+import eu.mctraps.MCTrapsDisplayer.listeners.PlayerJoinListener;
 import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -15,7 +16,7 @@ public class MCTrapsDisplayer extends JavaPlugin {
         getDataFolder().mkdir();
         config = getConfig();
 
-//        getServer().getPluginManager().registerEvents(new PlayerChatListener(this), this);
+        getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
 
         getCommand("displayer").setExecutor(new Commands(this));
         getCommand("bar").setExecutor(new Commands(this));
