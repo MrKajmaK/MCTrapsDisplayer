@@ -12,6 +12,7 @@ commands:
   bar:
     description: "Wyswietl wiadomosc na ActionBarze"
     usage: /<command>
+    aliases: [actionbar]
     permission: tools.displayer.bar
   titled:
     description: "Wyswietl wiadomosc jako Title"

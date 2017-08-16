@@ -5,7 +5,7 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class MCTrapsDisplayer extends JavaPlugin {
-    FileConfiguration config;
+    public FileConfiguration config;
 
     @Override
     public void onEnable() {

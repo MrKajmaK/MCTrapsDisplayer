@@ -1,0 +1,6 @@
+titles:
+  onJoin:
+    display: true
+    title: 'Welcome to [name] server!'
+    subtitle: ''
+  defaultDuration: 40

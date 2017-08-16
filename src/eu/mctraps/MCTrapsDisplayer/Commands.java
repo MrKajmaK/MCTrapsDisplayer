@@ -23,7 +23,7 @@ public class Commands implements CommandExecutor {
             if (sender.hasPermission("tools.displayer.admin")) {
                 if (args.length == 0) {
                     sender.sendMessage("§3§l»§3§m----------§3§l« §9Komendy §3§l»§3§m----------§3§l«");
-                    sender.sendMessage(" §3§l» §7/bar");
+                    sender.sendMessage(" §3§l» §7/bar §8[alias: actionbar]");
                     sender.sendMessage(" §3§l» §7/titled");
                     sender.sendMessage("§3§l»§3§m----------§3§l« §9Plugin MCTrapsDisplayer v1.0.0 by §6KajmaczeK §3§l»§3§m----------§3§l«");
                     return true;
@@ -73,11 +73,12 @@ public class Commands implements CommandExecutor {
 
             return true;
         } else if(cmd.getName().equalsIgnoreCase("titled")) {
+            int defaultDuration = plugin.config.getInt("title.defaultDuration");
             if(sender.hasPermission("tools.displayer.title")) {
                 if(args.length == 1) {
                     if(plugin.getServer().getPlayer(args[0]) == null) {
                         if(sender instanceof Player) {
-                            Title title = new Title(args[0], null, 40, plugin);
+                            Title title = new Title(args[0], null, defaultDuration, plugin);
                             title.send((Player) sender);
                             sender.sendMessage("§2Pomyslnie wyslano wiadomosc " + colorify(args[0]).replace('_', ' '));
                         } else {
@@ -88,15 +89,15 @@ public class Commands implements CommandExecutor {
                     }
                 } else if(args.length == 2) {
                     if (args[0].equalsIgnoreCase("all")) {
-                        Title title = new Title(args[1], null, 40, plugin);
+                        Title title = new Title(args[1], null, defaultDuration, plugin);
                         title.sendAll();
                         sender.sendMessage("§2Pomyslnie wyslano wiadomosc " + colorify(args[1]).replace('_', ' ') + "§2 do wszystkich graczy");
                     } else if (plugin.getServer().getPlayer(args[0]) != null) {
-                        Title title = new Title(args[1], null, 40, plugin);
+                        Title title = new Title(args[1], null, defaultDuration, plugin);
                         title.send(plugin.getServer().getPlayer(args[0]));
                     } else {
                         if(sender instanceof Player) {
-                            Title title = new Title(args[0], args[1], 40, plugin);
+                            Title title = new Title(args[0], args[1], defaultDuration, plugin);
                             title.send((Player) sender);
                             sender.sendMessage("§2Pomyslnie wyslano wiadomosc " + colorify(args[0]).replace('_', ' '));
                         } else {
@@ -111,7 +112,7 @@ public class Commands implements CommandExecutor {
                             title.sendAll();
                             sender.sendMessage("§2Pomyslnie wyslano wiadomosc §4" + colorify(args[1]).replace('_', ' ') + "§2 do wszystkich graczy");
                         } catch (NumberFormatException e) {
-                            Title title = new Title(args[1], args[2], 40, plugin);
+                            Title title = new Title(args[1], args[2], defaultDuration, plugin);
                             title.sendAll();
                             sender.sendMessage("§2Pomyslnie wyslano wiadomosc §4" + colorify(args[1]).replace('_', ' ') + "§2 do wszystkich graczy");
                         }
@@ -122,7 +123,7 @@ public class Commands implements CommandExecutor {
                             title.send(plugin.getServer().getPlayer(args[0]));
                             sender.sendMessage("§2Pomyslnie wyslano wiadomosc " + colorify(args[1]).replace('_', ' ') + "§2 do " + plugin.getServer().getPlayer(args[0]).getDisplayName());
                         } catch (NumberFormatException e) {
-                            Title title = new Title(args[1], args[2], 40, plugin);
+                            Title title = new Title(args[1], args[2], defaultDuration, plugin);
                             title.send(plugin.getServer().getPlayer(args[0]));
                             sender.sendMessage("§2Pomyslnie wyslano wiadomosc §4" + colorify(args[1]).replace('_', ' ') + "§2 do wszystkich graczy");
                         }
