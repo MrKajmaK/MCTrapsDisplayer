@@ -166,6 +166,7 @@ public class Commands implements CommandExecutor {
                     message.append(plugin.config.getString("broadcasts.prefix"));
                     for (int i = 0; i < args.length; i++) {
                         message.append(args[i]);
+                        message.append(" ");
                     }
 
                     plugin.getServer().broadcastMessage(colorify(message.toString()));
