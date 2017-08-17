@@ -73,7 +73,7 @@ public class Commands implements CommandExecutor {
 
             return true;
         } else if(cmd.getName().equalsIgnoreCase("titled")) {
-            int defaultDuration = plugin.config.getInt("title.defaultDuration");
+            int defaultDuration = plugin.config.getInt("titles.defaultDuration");
             if(sender.hasPermission("tools.displayer.title")) {
                 if(args.length == 1) {
                     if(plugin.getServer().getPlayer(args[0]) == null) {
