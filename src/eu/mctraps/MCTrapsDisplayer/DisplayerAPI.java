@@ -40,4 +40,30 @@ public class DisplayerAPI {
             t.sendAll();
         }
     }
+    public static void Title(Player player, String title, String subtitle) {
+        Title t = new Title(title, subtitle, new MCTrapsDisplayer().config.getInt("titles.defaultDuration"), new MCTrapsDisplayer());
+        t.send(player);
+    }
+    public static void Title(Player player, String msg, Boolean subtitle) {
+        if(!subtitle) {
+            Title t = new Title(msg, null, new MCTrapsDisplayer().config.getInt("titles.defaultDuration"), new MCTrapsDisplayer());
+            t.send(player);
+        } else {
+            Title t = new Title(null, msg, new MCTrapsDisplayer().config.getInt("titles.defaultDuration"), new MCTrapsDisplayer());
+            t.send(player);
+        }
+    }
+    public static void Title(String title, String subtitle) {
+        Title t = new Title(title, subtitle, new MCTrapsDisplayer().config.getInt("titles.defaultDuration"), new MCTrapsDisplayer());
+        t.sendAll();
+    }
+    public static void Title(String msg, Boolean subtitle) {
+        if(!subtitle) {
+            Title t = new Title(msg, null, new MCTrapsDisplayer().config.getInt("titles.defaultDuration"), new MCTrapsDisplayer());
+            t.sendAll();
+        } else {
+            Title t = new Title(null, msg, new MCTrapsDisplayer().config.getInt("titles.defaultDuration"), new MCTrapsDisplayer());
+            t.sendAll();
+        }
+    }
 }
