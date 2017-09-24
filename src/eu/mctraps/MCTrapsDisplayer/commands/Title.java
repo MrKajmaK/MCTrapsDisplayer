@@ -3,14 +3,13 @@ package eu.mctraps.MCTrapsDisplayer.commands;
 import eu.mctraps.MCTrapsDisplayer.MCTrapsDisplayer;
 import net.minecraft.server.v1_8_R3.IChatBaseComponent;
 import net.minecraft.server.v1_8_R3.PacketPlayOutTitle;
+import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 import static eu.mctraps.MCTrapsDisplayer.MCTrapsDisplayer.colorify;
 
 public class Title {
-    MCTrapsDisplayer plugin;
-
     IChatBaseComponent chatTitle;
     IChatBaseComponent chatSubtitle;
 
@@ -22,9 +21,7 @@ public class Title {
     boolean isTitle = false;
     boolean isSubtitle = false;
 
-    public Title(String message, String subtitle, int duration, MCTrapsDisplayer plugin) {
-        this.plugin = plugin;
-
+    public Title(String message, String subtitle, int duration) {
         if(message != null) {
             isTitle = true;
             chatTitle = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + colorify(message).replace('_', ' ') + "\"}");
@@ -70,13 +67,13 @@ public class Title {
 
     public void sendAll() {
         if(isTitle) {
-            for (Player p : plugin.getServer().getOnlinePlayers()) {
+            for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                 ((CraftPlayer) p).getHandle().playerConnection.sendPacket(title);
                 ((CraftPlayer) p).getHandle().playerConnection.sendPacket(length);
             }
         }
         if(isSubtitle) {
-            for (Player p : plugin.getServer().getOnlinePlayers()) {
+            for (Player p : Bukkit.getServer().getOnlinePlayers()) {
                 ((CraftPlayer) p).getHandle().playerConnection.sendPacket(subtitle);
                 ((CraftPlayer) p).getHandle().playerConnection.sendPacket(sublength);
             }

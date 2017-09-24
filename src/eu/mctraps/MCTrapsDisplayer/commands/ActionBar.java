@@ -3,19 +3,18 @@ package eu.mctraps.MCTrapsDisplayer.commands;
 import eu.mctraps.MCTrapsDisplayer.MCTrapsDisplayer;
 import net.minecraft.server.v1_8_R3.IChatBaseComponent;
 import net.minecraft.server.v1_8_R3.PacketPlayOutChat;
+import org.bukkit.Bukkit;
 import org.bukkit.craftbukkit.v1_8_R3.entity.CraftPlayer;
 import org.bukkit.entity.Player;
 
 import static eu.mctraps.MCTrapsDisplayer.MCTrapsDisplayer.colorify;
 
 public class ActionBar {
-    MCTrapsDisplayer plugin;
     Player p;
     IChatBaseComponent icbc;
     PacketPlayOutChat bar;
 
-    public ActionBar(String message, MCTrapsDisplayer plugin) {
-        this.plugin = plugin;
+    public ActionBar(String message) {
         this.icbc = IChatBaseComponent.ChatSerializer.a("{\"text\": \"" + colorify(message).replace('_', ' ') + "\"}");
         this.bar = new PacketPlayOutChat(icbc, (byte)2);
     }
@@ -33,7 +32,7 @@ public class ActionBar {
     }
 
     public void sendAll() {
-        for(Player p : plugin.getServer().getOnlinePlayers()) {
+        for(Player p : Bukkit.getServer().getOnlinePlayers()) {
             ((CraftPlayer)p).getHandle().playerConnection.sendPacket(bar);
         }
     }

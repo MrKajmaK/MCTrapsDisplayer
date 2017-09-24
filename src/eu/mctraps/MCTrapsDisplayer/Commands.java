@@ -78,7 +78,7 @@ public class Commands implements CommandExecutor {
                 if(args.length == 1) {
                     if(plugin.getServer().getPlayer(args[0]) == null) {
                         if(sender instanceof Player) {
-                            Title title = new Title(args[0], null, defaultDuration, plugin);
+                            Title title = new Title(args[0], null, defaultDuration);
                             title.send((Player) sender);
                             sender.sendMessage("§2Pomyslnie wyslano wiadomosc " + colorify(args[0]).replace('_', ' '));
                         } else {
@@ -89,15 +89,15 @@ public class Commands implements CommandExecutor {
                     }
                 } else if(args.length == 2) {
                     if (args[0].equalsIgnoreCase("all")) {
-                        Title title = new Title(args[1], null, defaultDuration, plugin);
+                        Title title = new Title(args[1], null, defaultDuration);
                         title.sendAll();
                         sender.sendMessage("§2Pomyslnie wyslano wiadomosc " + colorify(args[1]).replace('_', ' ') + "§2 do wszystkich graczy");
                     } else if (plugin.getServer().getPlayer(args[0]) != null) {
-                        Title title = new Title(args[1], null, defaultDuration, plugin);
+                        Title title = new Title(args[1], null, defaultDuration);
                         title.send(plugin.getServer().getPlayer(args[0]));
                     } else {
                         if(sender instanceof Player) {
-                            Title title = new Title(args[0], args[1], defaultDuration, plugin);
+                            Title title = new Title(args[0], args[1], defaultDuration);
                             title.send((Player) sender);
                             sender.sendMessage("§2Pomyslnie wyslano wiadomosc " + colorify(args[0]).replace('_', ' '));
                         } else {
@@ -108,22 +108,22 @@ public class Commands implements CommandExecutor {
                     if(args[0].equalsIgnoreCase("all")) {
                         try {
                             int duration = Integer.parseInt(args[2]);
-                            Title title = new Title(args[1], null, duration, plugin);
+                            Title title = new Title(args[1], null, duration);
                             title.sendAll();
                             sender.sendMessage("§2Pomyslnie wyslano wiadomosc §4" + colorify(args[1]).replace('_', ' ') + "§2 do wszystkich graczy");
                         } catch (NumberFormatException e) {
-                            Title title = new Title(args[1], args[2], defaultDuration, plugin);
+                            Title title = new Title(args[1], args[2], defaultDuration);
                             title.sendAll();
                             sender.sendMessage("§2Pomyslnie wyslano wiadomosc §4" + colorify(args[1]).replace('_', ' ') + "§2 do wszystkich graczy");
                         }
                     } else if(plugin.getServer().getPlayer(args[0]) != null) {
                         try {
                             int duration = Integer.parseInt(args[2]);
-                            Title title = new Title(args[1], null, duration, plugin);
+                            Title title = new Title(args[1], null, duration);
                             title.send(plugin.getServer().getPlayer(args[0]));
                             sender.sendMessage("§2Pomyslnie wyslano wiadomosc " + colorify(args[1]).replace('_', ' ') + "§2 do " + plugin.getServer().getPlayer(args[0]).getDisplayName());
                         } catch (NumberFormatException e) {
-                            Title title = new Title(args[1], args[2], defaultDuration, plugin);
+                            Title title = new Title(args[1], args[2], defaultDuration);
                             title.send(plugin.getServer().getPlayer(args[0]));
                             sender.sendMessage("§2Pomyslnie wyslano wiadomosc §4" + colorify(args[1]).replace('_', ' ') + "§2 do wszystkich graczy");
                         }
@@ -133,11 +133,11 @@ public class Commands implements CommandExecutor {
                 } else if(args.length == 4) {
                     try {
                         if (args[0].equalsIgnoreCase("all")) {
-                            Title title = new Title(args[1], args[2], Integer.parseInt(args[3]), plugin);
+                            Title title = new Title(args[1], args[2], Integer.parseInt(args[3]));
                             title.sendAll();
                             sender.sendMessage("§2Pomyslnie wyslano wiadomosc §4" + colorify(args[1]).replace('_', ' ') + "§2 do wszystkich graczy");
                         } else if (plugin.getServer().getPlayer(args[0]) != null) {
-                            Title title = new Title(args[1], args[2], Integer.parseInt(args[3]), plugin);
+                            Title title = new Title(args[1], args[2], Integer.parseInt(args[3]));
                             title.send(plugin.getServer().getPlayer(args[0]));
                             sender.sendMessage("§2Pomyslnie wyslano wiadomosc " + colorify(args[1]).replace('_', ' ') + "§2 do " + plugin.getServer().getPlayer(args[0]).getDisplayName());
                         } else {
