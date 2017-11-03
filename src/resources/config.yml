@@ -4,5 +4,9 @@ titles:
     title: 'Welcome to [name] server!'
     subtitle: ''
   defaultDuration: 40
+actionbars:
+  onJoin:
+    display: true
+    message: 'Welcome to server!'
 broadcasts:
   prefix: '&4[&3&lYour Server&4] &9'

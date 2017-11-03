@@ -38,7 +38,7 @@ public class Commands implements CommandExecutor {
                 if (args.length == 1) {
                     if (plugin.getServer().getPlayer(args[0]) == null) {
                         if (sender instanceof Player) {
-                            ActionBar bar = new ActionBar(args[0], plugin);
+                            ActionBar bar = new ActionBar(args[0]);
                             bar.send((Player)sender);
                             sender.sendMessage("§2Pomyslnie wyslano wiadomosc " + colorify(args[0]).replace('_', ' '));
                         } else {
@@ -49,11 +49,11 @@ public class Commands implements CommandExecutor {
                     }
                 } else if (args.length == 2) {
                     if(args[0].equalsIgnoreCase("all")) {
-                        ActionBar bar = new ActionBar(args[1], plugin);
+                        ActionBar bar = new ActionBar(args[1]);
                         bar.sendAll();
                         sender.sendMessage("§2Pomyslnie wyslano wiadomosc " + colorify(args[1]).replace('_', ' ') + "§2 do wszystkich graczy");
                     } else if (plugin.getServer().getPlayer(args[0]) != null) {
-                        ActionBar bar = new ActionBar(args[1], plugin);
+                        ActionBar bar = new ActionBar(args[1]);
                         bar.send(plugin.getServer().getPlayer(args[0]));
                         sender.sendMessage("§2Pomyslnie wyslano wiadomosc " + colorify(args[1]).replace('_', ' ') + "§2 do " + plugin.getServer().getPlayer(args[0]).getDisplayName());
                     } else {
